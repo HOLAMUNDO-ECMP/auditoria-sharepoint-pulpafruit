@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auditoria SharePoint - PULPAFRUIT SAS</title>
+  <link rel="stylesheet" href="Styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <img src="Img/Logosimpleblanco.svg" alt="PULPAFRUIT" class="brand-logo-img">
+        <div class="brand-divider"></div>
+        <div class="brand-text">
+          <div class="brand-name">Auditoria de Formatos</div>
+          <div class="brand-sub">SharePoint · Gestion Documental</div>
+        </div>
+      </div>
+      <div class="header-meta">
+        <span class="meta-date" id="fecha-generacion">Cargando...</span>
+        <button class="btn-refresh" id="btn-refresh" onclick="cargarDatos()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          Actualizar
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero-metrics">
+    <div class="hero-bg-leaf"></div>
+    <div class="container">
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-icon icon-white">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </div>
+          <div class="metric-val" id="m-areas">—</div>
+          <div class="metric-label">Areas</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon icon-white">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <div class="metric-val" id="m-total">—</div>
+          <div class="metric-label">Total formatos</div>
+        </div>
+        <div class="metric-card metric-card--highlight">
+          <div class="metric-icon icon-green">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="metric-val highlight" id="m-activos">—</div>
+          <div class="metric-label">Activos</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon icon-amber">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div class="metric-val amber" id="m-inactivos">—</div>
+          <div class="metric-label">Inactivos</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon icon-red">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          </div>
+          <div class="metric-val red" id="m-nunca">—</div>
+          <div class="metric-label">Sin uso</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <main class="main container">
+
+    <div id="vista-resumen" class="vista active">
+      <div class="section-header">
+        <h2 class="section-title">Resumen por area</h2>
+        <span class="section-badge" id="badge-fecha"></span>
+      </div>
+      <div class="resumen-grid" id="resumen-cards"></div>
+      <div class="section-header" style="margin-top:2rem">
+        <h2 class="section-title">Top usuarios mas activos</h2>
+      </div>
+      <div class="card">
+        <div class="usuarios-list" id="usuarios-globales"></div>
+      </div>
+    </div>
+
+    <div id="vista-area" class="vista">
+      <div id="area-header-block"></div>
+      <div class="area-stats-row" id="area-stats-row"></div>
+      <div id="area-activos-section"></div>
+      <div id="area-inactivos-section"></div>
+      <div id="area-nunca-section"></div>
+      <div id="area-usuarios-section"></div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="Img/Logosimpleverde.svg" alt="PULPAFRUIT" class="footer-logo">
+        <span>the fruit taste</span>
+      </div>
+      <span id="footer-total" class="footer-info"></span>
+      <span class="footer-info">Auditoria SharePoint · Datos en tiempo real</span>
+    </div>
+  </footer>
+
+  <div class="loading-overlay" id="loading">
+    <div class="loading-box">
+      <img src="Img/Logosimpleblanco.svg" alt="PULPAFRUIT" class="loading-logo">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">Cargando datos de SharePoint...</div>
+    </div>
+  </div>
+
+  <script src="App.js"></script>
+</body>
+</html>
