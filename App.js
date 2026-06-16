@@ -662,8 +662,11 @@ function renderTablaFormatos(formatos, titulo, clase, tipo) {
     const pct  = Math.round((f.totalItems / maxItems) * 100);
     const barC = tipo === 'activa' ? '#3DAA35' : '#EF9F27';
     const dC   = f.diasSinUso === 0 ? 'dias-ok' : f.diasSinUso <= 30 ? 'dias-ok' : f.diasSinUso <= 90 ? 'dias-warn' : 'dias-danger';
+    const POWERAPPS_BASE = 'https://apps.powerapps.com/play/e/5e486c6e-204c-ee38-94c6-2c68092acf16/a/b6eacb83-c58c-4324-b552-7fdb4db70dd6?tenantId=f16b5c8e-ad45-4fc4-a55b-0af26c456817&screenName=Sc_';
+    const screenName = f.codigo.replace(/-/g, '_');
+    const powerAppsUrl = POWERAPPS_BASE + screenName;
     return `<tr class="${tipo === 'inactiva' ? 'row-inactiva' : ''}">
-      <td><strong>${f.codigo}</strong></td>
+      <td><strong><a href="${powerAppsUrl}" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1.5px dashed #3DAA35;cursor:pointer" title="Ver en Power Apps">${f.codigo} ↗</a></strong></td>
       <td><span class="badge badge-${tipo === 'activa' ? 'activa' : 'inactiva'}">${tipo === 'activa' ? 'Activa' : 'Inactiva'}</span></td>
       <td><div class="bar-mini-wrap"><div class="bar-mini-bg"><div class="bar-mini-fill" style="width:${pct}%;background:${barC}"></div></div>${f.totalItems}</div></td>
       <td><span class="${freqClass(f.frecuencia)}">${f.frecuencia}</span></td>
