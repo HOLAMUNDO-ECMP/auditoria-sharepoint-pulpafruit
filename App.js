@@ -15,18 +15,18 @@ const CONFIG = {
 
 // Colores por area — paleta verde PULPAFRUIT + colores complementarios
 const AREA_COLORS = [
-  { bg: '#E8F5E7', color: '#2D7A28', dot: '#3DAA35' }, // Verde principal
-  { bg: '#E6F1FB', color: '#185FA5', dot: '#378ADD' }, // Azul
-  { bg: '#EEEDFE', color: '#534AB7', dot: '#7F77DD' }, // Purpura
-  { bg: '#FAEEDA', color: '#854F0B', dot: '#BA7517' }, // Ambar
-  { bg: '#E1F5EE', color: '#0F6E56', dot: '#1D9E75' }, // Verde teal
-  { bg: '#FAECE7', color: '#993C1D', dot: '#D85A30' }, // Coral
-  { bg: '#FCEBEB', color: '#A32D2D', dot: '#E24B4A' }, // Rojo
-  { bg: '#F1EFE8', color: '#5F5E5A', dot: '#888780' }, // Gris
-  { bg: '#FBEAF0', color: '#72243E', dot: '#D4537E' }, // Rosa
-  { bg: '#EAF3DE', color: '#3B6D11', dot: '#639922' }, // Verde oscuro
-  { bg: '#E6F7FA', color: '#0E6E7A', dot: '#1DA3B5' }, // Cian
-  { bg: '#FDF4E7', color: '#7A4F0B', dot: '#C47B1A' }, // Naranja
+  { bg: '#E8F5E7', color: '#2D7A28', dot: '#3DAA35' },
+  { bg: '#E6F1FB', color: '#185FA5', dot: '#378ADD' },
+  { bg: '#EEEDFE', color: '#534AB7', dot: '#7F77DD' },
+  { bg: '#FAEEDA', color: '#854F0B', dot: '#BA7517' },
+  { bg: '#E1F5EE', color: '#0F6E56', dot: '#1D9E75' },
+  { bg: '#FAECE7', color: '#993C1D', dot: '#D85A30' },
+  { bg: '#FCEBEB', color: '#A32D2D', dot: '#E24B4A' },
+  { bg: '#F1EFE8', color: '#5F5E5A', dot: '#888780' },
+  { bg: '#FBEAF0', color: '#72243E', dot: '#D4537E' },
+  { bg: '#EAF3DE', color: '#3B6D11', dot: '#639922' },
+  { bg: '#E6F7FA', color: '#0E6E7A', dot: '#1DA3B5' },
+  { bg: '#FDF4E7', color: '#7A4F0B', dot: '#C47B1A' },
 ];
 
 const AVATAR_COLORS = [
@@ -39,7 +39,6 @@ const AVATAR_COLORS = [
   { bg: '#F1EFE8', color: '#5F5E5A' },
 ];
 
-// Iconos y nombres reales de las areas de PULPAFRUIT
 const AREA_META = {
   'comercio exterior':     { icon: '🌎', nombre: 'Comercio Exterior' },
   'laboratorio':           { icon: '🔬', nombre: 'Laboratorio' },
@@ -113,7 +112,6 @@ function getIconoArea(displayName) {
 async function cargarDatos() {
   mostrarLoading(true);
   try {
-    // Intenta obtener token real
     const token = await obtenerToken();
     if (!token) { cargarDatosEjemplo(); return; }
     DATOS.token = token;
@@ -157,8 +155,6 @@ async function cargarDatos() {
 }
 
 async function obtenerToken() {
-  // En produccion dentro de SharePoint, usar el token del contexto de SP
-  // Para local siempre retorna null y usa datos de ejemplo
   return null;
 }
 
@@ -332,8 +328,8 @@ function cargarDatosEjemplo() {
           { codigo:'PR-FO-003', estado:'INACTIVA', totalItems:8,  frecuencia:'Esporadica', diasSinUso:210, ultimaMod:'31/10/2025', ultimoUsuario:'Felipe Castillo', emailUltimo:'f.castillo@pulpafruit.com', fechaCreacion:'01/01/2024' },
         ],
         nunca: [
-          { codigo:'PR-FO-004', estado:'NUNCA', totalItems:0, frecuencia:'Sin datos', diasSinUso:null, ultimaMod:'—', ultimoUsuario:'—', emailUltimo:'—', fechaCreacion:'01/06/2024' },
-          { codigo:'PR-FO-005', estado:'NUNCA', totalItems:0, frecuencia:'Sin datos', diasSinUso:null, ultimaMod:'—', ultimoUsuario:'—', emailUltimo:'—', fechaCreacion:'01/06/2024' },
+          { codigo:'PR-FO-004', estado:'NUNCA', totalItems:0, frecuencia:'Sin datos', diasSinUso:null, ultimaMod:'—', ultimoUsuario:'—', fechaCreacion:'01/06/2024' },
+          { codigo:'PR-FO-005', estado:'NUNCA', totalItems:0, frecuencia:'Sin datos', diasSinUso:null, ultimaMod:'—', ultimoUsuario:'—', fechaCreacion:'01/06/2024' },
         ]
       },
       totalFormatos:5, pctUso:40, totalRegistros:96, promRegistros:'19.2'
@@ -427,16 +423,16 @@ function cargarDatosEjemplo() {
       color: AREA_COLORS[0],
       formatos: {
         activos: [
-          { codigo:'LG-FO-001', estado:'ACTIVA', totalItems:187, frecuencia:'Diaria',  diasSinUso:0,  ultimaMod:'28/05/2026', ultimoUsuario:'Carlos Ramirez', emailUltimo:'c.ramirez@pulpafruit.com', fechaCreacion:'05/01/2024' },
-          { codigo:'LG-FO-002', estado:'ACTIVA', totalItems:143, frecuencia:'Diaria',  diasSinUso:1,  ultimaMod:'27/05/2026', ultimoUsuario:'Carlos Ramirez', emailUltimo:'c.ramirez@pulpafruit.com', fechaCreacion:'05/01/2024' },
-          { codigo:'LG-FO-003', estado:'ACTIVA', totalItems:98,  frecuencia:'Diaria',  diasSinUso:0,  ultimaMod:'28/05/2026', ultimoUsuario:'Pedro Vega',     emailUltimo:'p.vega@pulpafruit.com',   fechaCreacion:'10/01/2024' },
-          { codigo:'LG-AL-001', estado:'ACTIVA', totalItems:55,  frecuencia:'Semanal', diasSinUso:7,  ultimaMod:'21/05/2026', ultimoUsuario:'Pedro Vega',     emailUltimo:'p.vega@pulpafruit.com',   fechaCreacion:'15/01/2024' },
+          { codigo:'LO-FO-004', estado:'ACTIVA', totalItems:187, frecuencia:'Diaria',  diasSinUso:0,  ultimaMod:'28/05/2026', ultimoUsuario:'Carlos Ramirez', emailUltimo:'c.ramirez@pulpafruit.com', fechaCreacion:'05/01/2024' },
+          { codigo:'LO-FO-060', estado:'ACTIVA', totalItems:143, frecuencia:'Diaria',  diasSinUso:1,  ultimaMod:'27/05/2026', ultimoUsuario:'Carlos Ramirez', emailUltimo:'c.ramirez@pulpafruit.com', fechaCreacion:'05/01/2024' },
+          { codigo:'LO-FO-057', estado:'ACTIVA', totalItems:98,  frecuencia:'Diaria',  diasSinUso:0,  ultimaMod:'28/05/2026', ultimoUsuario:'Pedro Vega',     emailUltimo:'p.vega@pulpafruit.com',   fechaCreacion:'10/01/2024' },
+          { codigo:'LO-FO-041', estado:'ACTIVA', totalItems:55,  frecuencia:'Semanal', diasSinUso:7,  ultimaMod:'21/05/2026', ultimoUsuario:'Pedro Vega',     emailUltimo:'p.vega@pulpafruit.com',   fechaCreacion:'15/01/2024' },
         ],
         inactivos: [
-          { codigo:'LG-FO-004', estado:'INACTIVA', totalItems:14, frecuencia:'Esporadica', diasSinUso:256, ultimaMod:'15/09/2025', ultimoUsuario:'Carlos Ramirez', emailUltimo:'c.ramirez@pulpafruit.com', fechaCreacion:'01/01/2024' },
+          { codigo:'LO-FO-062', estado:'INACTIVA', totalItems:14, frecuencia:'Esporadica', diasSinUso:256, ultimaMod:'15/09/2025', ultimoUsuario:'Carlos Ramirez', emailUltimo:'c.ramirez@pulpafruit.com', fechaCreacion:'01/01/2024' },
         ],
         nunca: [
-          { codigo:'LG-FO-005', estado:'NUNCA', totalItems:0, frecuencia:'Sin datos', diasSinUso:null, ultimaMod:'—', ultimoUsuario:'—', emailUltimo:'—', fechaCreacion:'01/03/2024' },
+          { codigo:'LO-FO-008', estado:'NUNCA', totalItems:0, frecuencia:'Sin datos', diasSinUso:null, ultimaMod:'—', ultimoUsuario:'—', emailUltimo:'—', fechaCreacion:'01/03/2024' },
         ]
       },
       totalFormatos:6, pctUso:67, totalRegistros:497, promRegistros:'82.8'
@@ -658,13 +654,12 @@ function renderizarArea(area) {
 
 function renderTablaFormatos(formatos, titulo, clase, tipo) {
   const maxItems = Math.max(...formatos.map(f => f.totalItems), 1);
+  const POWERAPPS_BASE = 'https://apps.powerapps.com/play/e/5e486c6e-204c-ee38-94c6-2c68092acf16/a/b6eacb83-c58c-4324-b552-7fdb4db70dd6?tenantId=f16b5c8e-ad45-4fc4-a55b-0af26c456817&screenName=Sc_';
   const filas = formatos.map(f => {
     const pct  = Math.round((f.totalItems / maxItems) * 100);
     const barC = tipo === 'activa' ? '#3DAA35' : '#EF9F27';
     const dC   = f.diasSinUso === 0 ? 'dias-ok' : f.diasSinUso <= 30 ? 'dias-ok' : f.diasSinUso <= 90 ? 'dias-warn' : 'dias-danger';
-    const POWERAPPS_BASE = 'https://apps.powerapps.com/play/e/5e486c6e-204c-ee38-94c6-2c68092acf16/a/b6eacb83-c58c-4324-b552-7fdb4db70dd6?tenantId=f16b5c8e-ad45-4fc4-a55b-0af26c456817&screenName=Sc_';
-    const screenName = f.codigo.replace(/-/g, '_');
-    const powerAppsUrl = POWERAPPS_BASE + screenName;
+    const powerAppsUrl = POWERAPPS_BASE + f.codigo;
     return `<tr class="${tipo === 'inactiva' ? 'row-inactiva' : ''}">
       <td><strong><a href="${powerAppsUrl}" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1.5px dashed #3DAA35;cursor:pointer" title="Ver en Power Apps">${f.codigo} ↗</a></strong></td>
       <td><span class="badge badge-${tipo === 'activa' ? 'activa' : 'inactiva'}">${tipo === 'activa' ? 'Activa' : 'Inactiva'}</span></td>
@@ -753,6 +748,5 @@ function freqClass(f) {
 // INICIO
 // -----------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
-  // Para conectar a SharePoint real: cambiar cargarDatosEjemplo() por cargarDatos()
   cargarDatosEjemplo();
 });
